@@ -340,7 +340,7 @@ public class LotteryGame
 
 		}
 
-		return Etc.timeUntil(timeLeft, mini);
+		return Etc.timeUntil(timeLeft, mini, lConfig);
 	}
 
 	public boolean getWinner()
@@ -398,7 +398,7 @@ public class LotteryGame
 				// Add money to account.
 				account.add(amount);
 				// Announce the winner:
-				broadcastMessage("WinnerCongrat", players.get(rand), Etc.formatCost(amount, lConfig), ticketsBought);
+				broadcastMessage("WinnerCongrat", players.get(rand), Etc.formatCost(amount, lConfig), ticketsBought, lConfig.getPlural("ticket", ticketsBought));
 				addToWinnerList(players.get(rand), amount, 0);
 
 				double taxAmount = taxAmount();
@@ -416,15 +416,15 @@ public class LotteryGame
 				// let's throw it to an int.
 				final int matAmount = (int)Etc.formatAmount(amount, lConfig.useiConomy());
 				amount = (double)matAmount;
-				broadcastMessage("WinnerCongrat", players.get(rand), Etc.formatCost(amount, lConfig), ticketsBought);
+				broadcastMessage("WinnerCongrat", players.get(rand), Etc.formatCost(amount, lConfig), ticketsBought, lConfig.getPlural("ticket", ticketsBought));
 				broadcastMessage("WinnerCongratClaim");
 				addToWinnerList(players.get(rand), amount, lConfig.getMaterial());
 
 				addToClaimList(players.get(rand), matAmount, lConfig.getMaterial());
 			}
 			broadcastMessage(
-					"WinnerSummary", Etc.realPlayersFromList(players).size(), Etc.pluralWording(
-					"player", Etc.realPlayersFromList(players).size()), players.size(), Etc.pluralWording("ticket", players.size()));
+					"WinnerSummary", Etc.realPlayersFromList(players).size(), lConfig.getPlural(
+              "player", Etc.realPlayersFromList(players).size()), players.size(), lConfig.getPlural("ticket", players.size()));
 
 			// Add last winner to config.
 			lConfig.setLastwinner(players.get(rand));

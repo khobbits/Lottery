@@ -132,13 +132,13 @@ public class MainCommandExecutor implements CommandExecutor
 		if (lConfig.getMaxTicketsEachUser() > 1)
 		{
 			lGame.sendMessage(
-					player, "YourTickets", lGame.playerInList(player), Etc.pluralWording("ticket", lGame.playerInList(player)));
+					player, "YourTickets", lGame.playerInList(player), lConfig.getPlural("ticket", lGame.playerInList(player)));
 		}
 		// Number of tickets available?
 		if (lConfig.getTicketsAvailable() > 0)
 		{
 			lGame.sendMessage(
-					sender, "TicketRemaining", (lConfig.getTicketsAvailable() - lGame.ticketsSold()), Etc.pluralWording(
+					sender, "TicketRemaining", (lConfig.getTicketsAvailable() - lGame.ticketsSold()), lConfig.getPlural(
 					"ticket", lConfig.getTicketsAvailable() - lGame.ticketsSold()));
 		}
 		lGame.sendMessage(sender, "CommandHelp");
@@ -236,7 +236,7 @@ public class MainCommandExecutor implements CommandExecutor
 		if (lConfig.getMaxTicketsEachUser() > 0 && lGame.playerInList(
 				player) + buyTickets > lConfig.getMaxTicketsEachUser())
 		{
-			lGame.sendMessage(sender, "ErrorAtMax", lConfig.getMaxTicketsEachUser(), Etc.pluralWording("ticket", lConfig.getMaxTicketsEachUser()));
+			lGame.sendMessage(sender, "ErrorAtMax", lConfig.getMaxTicketsEachUser(), lConfig.getPlural("ticket", lConfig.getMaxTicketsEachUser()));
 			return;
 		}
 
@@ -244,14 +244,14 @@ public class MainCommandExecutor implements CommandExecutor
 		{
 			// You got your ticket.
 			lGame.sendMessage(
-					sender, "BoughtTicket", buyTickets, Etc.pluralWording("ticket", buyTickets), Etc.formatCost(lConfig.getCost() * buyTickets, lConfig));
+					sender, "BoughtTicket", buyTickets, lConfig.getPlural("ticket", buyTickets), Etc.formatCost(lConfig.getCost() * buyTickets, lConfig));
 
 			// Can a user buy more than one ticket? How many
 			// tickets have he bought now?
 			if (lConfig.getMaxTicketsEachUser() > 1)
 			{
 				lGame.sendMessage(
-						sender, "BoughtTickets", lGame.playerInList(player), Etc.pluralWording("ticket", lGame.playerInList(player)));
+						sender, "BoughtTickets", lGame.playerInList(player), lConfig.getPlural("ticket", lGame.playerInList(player)));
 			}
 			if (lConfig.isBuyingExtendDeadline() && lGame.timeUntil() < lConfig.getBuyingExtendRemaining())
 			{
@@ -264,12 +264,12 @@ public class MainCommandExecutor implements CommandExecutor
 				if (lGame.timeUntil() < lConfig.getBroadcastBuyingTime())
 				{
 					lGame.broadcastMessage(
-							"BoughtAnnounceDraw", player.getDisplayName(), buyTickets, Etc.pluralWording("ticket", buyTickets), lGame.timeUntil(true));
+							"BoughtAnnounceDraw", player.getDisplayName(), buyTickets, lConfig.getPlural("ticket", buyTickets), lGame.timeUntil(true));
 				}
 				else
 				{
 					lGame.broadcastMessage(
-							"BoughtAnnounce", player.getDisplayName(), buyTickets, Etc.pluralWording("ticket", buyTickets));
+							"BoughtAnnounce", player.getDisplayName(), buyTickets, lConfig.getPlural("ticket", buyTickets));
 				}
 			}
 

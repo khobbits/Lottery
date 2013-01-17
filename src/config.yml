@@ -72,13 +72,13 @@ message:
     DrawNow: '%prefix% Lottery will be drawn at once.'
     DrawSoon: 'Soon'
     DrawSoonLong: 'Draw will occur soon!'
-    PlayerClaim: '%prefix You just claimed %0%'
+    PlayerClaim: '%prefix% You just claimed %0%'
     MessagesEnabled: '%prefix% You will now receive Lottery broadcast messages.'
     MessagesDisabled: '%prefix% You will no longer receive Lottery broadcast messages.'
 
     NoWinnerTickets: '%prefix% No tickets sold this round. Thats a shame.'
     NoWinnerRollover: '%prefix% No winner, we have a rollover! &a%0% &rwent to jackpot!'
-    WinnerCongrat: '%prefix% Congratulations go to %0% &rfor winning &c%1%&r with &c%2%&r tickets.'
+    WinnerCongrat: '%prefix% Congratulations go to %0% &rfor winning &c%1%&r with &c%2%&r %3%'
     WinnerCongratClaim: '%prefix% Use &c/lottery claim &rto claim the winnings.'
     WinnerSummary: '%prefix% There was a total of %0% %1% buying %2% %3%'
 
@@ -96,3 +96,15 @@ message:
     HelpConfig: "%prefix% Edit config commands%newline%%prefix% &c/lottery config cost <i>%newline%%prefix% &c/lottery config hours <i>
     %newline%%prefix% &c/lottery config maxTicketsEachUser <i>%newline%%prefix% &c/lottery config reload"
 
+    ticket: 'ticket'
+    tickets: 'tickets'
+    player: 'player'
+    players: 'players'
+    day: 'day'
+    day: 'days'
+    hour: 'hour'
+    hours: 'hours'
+    minute: 'minute'
+    minutes: 'minutes'
+    second: 'second'
+    seconds: 'seconds'

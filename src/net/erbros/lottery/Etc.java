@@ -46,85 +46,9 @@ public class Etc
 		return rawMaterialName.replace("_", " ");
 	}
 
-	public static String pluralWording(final String word, final Integer number)
-	{
-		// Start
-		if (word.equalsIgnoreCase("ticket"))
-		{
-			if (number == 1)
-			{
-				return "ticket";
-			}
-			else
-			{
-				return "tickets";
-			}
-		}
-		// Next
-		if (word.equalsIgnoreCase("player"))
-		{
-			if (number == 1)
-			{
-				return "player";
-			}
-			else
-			{
-				return "players";
-			}
-		}
-		// Next
-		if (word.equalsIgnoreCase("day"))
-		{
-			if (number == 1)
-			{
-				return "day";
-			}
-			else
-			{
-				return "days";
-			}
-		}
-		// Next
-		if (word.equalsIgnoreCase("hour"))
-		{
-			if (number == 1)
-			{
-				return "hour";
-			}
-			else
-			{
-				return "hours";
-			}
-		}
-		// Next
-		if (word.equalsIgnoreCase("minute"))
-		{
-			if (number == 1)
-			{
-				return "minute";
-			}
-			else
-			{
-				return "minutes";
-			}
-		}
-		// Next
-		if (word.equalsIgnoreCase("second"))
-		{
-			if (number == 1)
-			{
-				return "second";
-			}
-			else
-			{
-				return "seconds";
-			}
-		}
-		// Next
-		return "i don't know that word";
-	}
 
-	public static String timeUntil(final long time, final boolean mini)
+
+	public static String timeUntil(final long time, final boolean mini, LotteryConfig lConfig)
 	{
 		long timeLeft = time;
 		// How many days left?
@@ -140,7 +64,7 @@ public class Etc
 			}
 			else
 			{
-				stringTimeLeft += Integer.toString(days) + " " + Etc.pluralWording("day", days) + ", ";
+				stringTimeLeft += Integer.toString(days) + " " + lConfig.getPlural("day", days) + ", ";
 			}
 		}
 		if (timeLeft >= 60 * 60)
@@ -153,7 +77,7 @@ public class Etc
 			}
 			else
 			{
-				stringTimeLeft += Integer.toString(hours) + " " + Etc.pluralWording("hour", hours) + ", ";
+				stringTimeLeft += Integer.toString(hours) + " " + lConfig.getPlural("hour", hours) + ", ";
 			}
 		}
 		if (timeLeft >= 60)
@@ -167,7 +91,7 @@ public class Etc
 			}
 			else
 			{
-				stringTimeLeft += Integer.toString(minutes) + " " + Etc.pluralWording("minute", minutes) + ", ";
+				stringTimeLeft += Integer.toString(minutes) + " " + lConfig.getPlural("minute", minutes) + ", ";
 			}
 		}
 		else
@@ -191,7 +115,7 @@ public class Etc
 			{
 				stringTimeLeft += "and ";
 			}
-			stringTimeLeft += Integer.toString(secs) + " " + Etc.pluralWording("second", secs);
+			stringTimeLeft += Integer.toString(secs) + " " + lConfig.getPlural("second", secs);
 		}
 
 		return stringTimeLeft;
