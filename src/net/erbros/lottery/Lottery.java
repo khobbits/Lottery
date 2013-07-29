@@ -9,6 +9,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import net.erbros.lottery.register.payment.Method;
 import net.erbros.lottery.register.payment.Methods;
 
+import java.util.logging.Level;
+
 
 public class Lottery extends JavaPlugin
 {
@@ -19,6 +21,7 @@ public class Lottery extends JavaPlugin
 	private Server server = null;
 	private LotteryConfig lConfig;
 	private LotteryGame lGame;
+    private LotteryDB db;
 
 	@Override
 	public void onDisable()
@@ -41,7 +44,20 @@ public class Lottery extends JavaPlugin
 		config.options().copyDefaults(true);
 		saveConfig();
 		lConfig.loadConfig();
-
+        if(lConfig.isDbEnabled())
+        {
+            try
+            {
+                db = new LotteryDB(lConfig.getDbHostname(), lConfig.getDbPort(), lConfig.getDbDatabase(), lConfig.getDbUserName(), lConfig.getDbPassword(), this  );
+                getLogger().log( Level.INFO,  "Database loaded" );
+            }
+            catch ( Exception e )
+            {
+                getLogger().log( Level.SEVERE, "Could not load DB!" );
+                lConfig.setDbEnabled( false );
+                e.printStackTrace();
+            }
+        }
 		final PluginManager pm = getServer().getPluginManager();
 
 		server = getServer();
@@ -225,4 +241,9 @@ public class Lottery extends JavaPlugin
 		lConfig.debugMsg("extendTime: " + extendTime);
 		return extendTime;
 	}
+
+    public LotteryDB getDb()
+    {
+        return db;
+    }
 }

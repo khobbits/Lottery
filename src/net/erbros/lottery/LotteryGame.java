@@ -2,8 +2,8 @@ package net.erbros.lottery;
 
 import java.io.*;
 import java.security.SecureRandom;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
 import org.bukkit.command.CommandSender;
@@ -401,6 +401,8 @@ public class LotteryGame
 				// Announce the winner:
 				broadcastMessage("WinnerCongrat", players.get(rand), Etc.formatCost(amount, lConfig), ticketsBought, lConfig.getPlural("ticket", ticketsBought));
 				addToWinnerList(players.get(rand), amount, 0);
+                addWinToDb( players.get( rand ), ticketsBought, amount, players.size() );
+
 
 				double taxAmount = taxAmount();
 				if (taxAmount() > 0 && lConfig.getTaxTarget().length() > 0)
@@ -420,8 +422,8 @@ public class LotteryGame
 				broadcastMessage("WinnerCongrat", players.get(rand), Etc.formatCost(amount, lConfig), ticketsBought, lConfig.getPlural("ticket", ticketsBought));
 				broadcastMessage("WinnerCongratClaim");
 				addToWinnerList(players.get(rand), amount, lConfig.getMaterial());
-
 				addToClaimList(players.get(rand), matAmount, lConfig.getMaterial());
+                addWinToDb( players.get( rand ), ticketsBought, amount, players.size() );
 			}
 			broadcastMessage(
 					"WinnerSummary", Etc.realPlayersFromList(players).size(), lConfig.getPlural(
@@ -438,6 +440,22 @@ public class LotteryGame
 		}
 		return true;
 	}
+
+    public void addWinToDb(String username, int ticketsBought, double amountWon, int totalTicketsBought)
+    {
+        if (lConfig.isDbEnabled())
+        {
+            try
+            {
+                plugin.getDb().addWinToDB( username, ticketsBought, amountWon, totalTicketsBought );
+            }
+            catch ( SQLException e )
+            {
+                plugin.getLogger().log( Level.SEVERE, "Could not save the win to the database!" );
+                e.printStackTrace();
+            }
+        }
+    }
 
 	public void clearAfterGettingWinner()
 	{
