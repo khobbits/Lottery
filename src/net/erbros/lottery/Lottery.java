@@ -122,7 +122,7 @@ public class Lottery extends JavaPlugin
 			// Let's try and stop any running threads.
 			try
 			{
-				Bukkit.getServer().getScheduler().cancelTasks((Plugin)this);
+//				Bukkit.getServer().getScheduler().cancelTasks((Plugin)this);
 			}
 			catch (ClassCastException exception)
 			{
@@ -192,7 +192,7 @@ public class Lottery extends JavaPlugin
 		// Cancel timer.
 		try
 		{
-			Bukkit.getServer().getScheduler().cancelTasks((Plugin)this);
+//			Bukkit.getServer().getScheduler().cancelTasks((Plugin)this);
 		}
 		catch (ClassCastException exception)
 		{
