@@ -125,7 +125,7 @@ public class LotteryConfig
 		messages.put("MessagesEnabled", formatCustomMessage("message.MessagesEnabled", "%prefix% You will now receive Lottery broadcast messages."));
 		messages.put("MessagesDisabled", formatCustomMessage("message.MessagesDisabled", "%prefix% You will no longer receive Lottery broadcast messages."));
 
-		messages.put("NoWinnerTickets", formatCustomMessage("message.NoWinnerTickets", "%prefix% No tickets sold this round. Thats a shame."));
+		messages.put("NoWinnerTickets", formatCustomMessage("message.NoWinnerTickets", "%prefix% No tickets sold this round. That\'s a shame."));
 		messages.put(
 				"NoWinnerRollover", formatCustomMessage("message.NoWinnerRollover", "%prefix% No winner, we have a rollover! &a%0% &rwent to jackpot!"));
 		messages.put("WinnerCongrat", formatCustomMessage("message.WinnerCongrat", "%prefix% Congratulations go to %0% &rfor winning &c%1%&r with &c%2%&r %3%."));
