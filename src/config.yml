@@ -76,7 +76,7 @@ message:
     MessagesEnabled: '%prefix% You will now receive Lottery broadcast messages.'
     MessagesDisabled: '%prefix% You will no longer receive Lottery broadcast messages.'
 
-    NoWinnerTickets: '%prefix% No tickets sold this round. Thats a shame.'
+    NoWinnerTickets: '%prefix% No tickets sold this round. That''s a shame.'
     NoWinnerRollover: '%prefix% No winner, we have a rollover! &a%0% &rwent to jackpot!'
     WinnerCongrat: '%prefix% Congratulations go to %0% &rfor winning &c%1%&r with &c%2%&r %3%'
     WinnerCongratClaim: '%prefix% Use &c/lottery claim &rto claim the winnings.'
