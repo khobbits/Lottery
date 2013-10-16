@@ -365,6 +365,10 @@ public class LotteryGame
 				// If it wasn't a player winning, then do some stuff. If it was a player, just continue below.
 				if (rand > players.size() - 1)
 				{
+					if (winningAmount() > 50000) { // if we got too high pot then redraw...
+						lConfig.debugMsg("We got too big pot trying to get winner");
+						getWinner();
+					}
 					// No winner this time, pot goes on to jackpot!
 					final double jackpot = winningAmount();
 

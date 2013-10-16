@@ -26,6 +26,7 @@ public class LotteryConfig
 	private boolean clearExtraInPot;
 	private int maxTicketsEachUser;
 	private int ticketsAvailable;
+	private int maximumPot;
 	private double jackpot;
 	private String lastwinner;
 	private double lastwinneramount;
@@ -65,6 +66,7 @@ public class LotteryConfig
 		netPayout = config.getDouble("config.netPayout", 100);
 		maxTicketsEachUser = config.getInt("config.maxTicketsEachUser", 1);
 		ticketsAvailable = config.getInt("config.numberOfTicketsAvailable", 0);
+		maximumPot = config.getInt("config.MaximumPotSize", 50000);
 		jackpot = config.getDouble("config.jackpot", 0);
 		nextexec = config.getLong("config.nextexec");
 		cost = Etc.formatAmount(config.getDouble("config.cost", 5), useiConomy);
@@ -406,5 +408,8 @@ public class LotteryConfig
 	public String formatCurrency(double amount)
 	{
 		return plugin.Method.format(amount);
+	}
+	public double getMaximumPot() {
+		return config.getInt("config.MaximumPotSize");
 	}
 }

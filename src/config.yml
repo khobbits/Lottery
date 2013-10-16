@@ -25,6 +25,8 @@ config:
     maxTicketsEachUser: 1
   # Use this option to enable fixed ticket mode.  Setting this will cause rollovers.  
     numberOfTicketsAvailable: 0
+  # What should be the maximum pot before not allowing more and redrawing until we got winner?
+    MaximumPotSize: 50000
       
     buyingExtend:
       # Should the next draw timer be extended if someone buys a ticket close to the draw?
