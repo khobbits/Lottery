@@ -41,6 +41,18 @@ config:
     extraInPot: 0
     jackpot: 0
     debug: false
+
+    database:
+      # Should the plugin log wins and/or tickets bought?
+        enabled: true
+      # Database address information
+        hostname: 'localhost'
+        port: 3306
+        database: 'lottery'
+      # Database Account data.
+        username: 'root'
+        password: ''
+
 message:
     prefix: '&6[LOTTERY]&r'
 

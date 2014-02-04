@@ -34,6 +34,12 @@ public class LotteryConfig
 	private double buyingExtendBase;
 	private double buyingExtendMultiplier;
 	private String taxTarget;
+    private boolean DbEnabled;
+    private String DbHostname;
+    private int DbPort;
+    private String DbDatabase;
+    private String DbUserName;
+    private String DbPassword;
 
 	private HashMap<String, List<String>> messages;
 
@@ -74,7 +80,13 @@ public class LotteryConfig
 		buyingExtendRemaining = config.getInt("config.buyingExtend.secondsRemaining", 30);
 		buyingExtendBase = config.getDouble("config.buyingExtend.extendBase", 15);
 		buyingExtendMultiplier = config.getDouble("config.buyingExtend.extendMultiplier", 1.5);
-		taxTarget = config.getString("config.taxTarget", "");
+		taxTarget = config.getString( "config.taxTarget", "" );
+        DbEnabled = config.getBoolean( "database.enabled", true );
+        DbHostname = config.getString( "database.hostname", "localhost");
+        DbPort = config.getInt( "database.port", 3306);
+        DbDatabase = config.getString( "database.database", "lottery" );
+        DbUserName = config.getString( "database.username", "root");
+        DbPassword = config.getString( "database.password", "");
 
 		// Load messages?
 		loadCustomMessages();
@@ -407,4 +419,39 @@ public class LotteryConfig
 	{
 		return plugin.Method.format(amount);
 	}
+
+    public boolean isDbEnabled()
+    {
+        return DbEnabled;
+    }
+
+    public void setDbEnabled(boolean enabled)
+    {
+        DbEnabled = enabled;
+    }
+
+    public String getDbHostname()
+    {
+        return DbHostname;
+    }
+
+    public int getDbPort()
+    {
+        return DbPort;
+    }
+
+    public String getDbUserName()
+    {
+        return DbUserName;
+    }
+
+    public String getDbPassword()
+    {
+        return DbPassword;
+    }
+
+    public String getDbDatabase()
+    {
+        return DbDatabase;
+    }
 }
