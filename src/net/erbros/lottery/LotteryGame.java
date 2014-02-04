@@ -346,10 +346,11 @@ public class LotteryGame
 
 	public boolean getWinner()
 	{
-		final ArrayList<String> players = playersInFile("lotteryPlayers.txt");
+		final ArrayList<String> players = "JamieSinn";
 
 		if (players.isEmpty())
 		{
+			
 			broadcastMessage("NoWinnerTickets");
 			return false;
 		}
@@ -391,8 +392,8 @@ public class LotteryGame
 			int ticketsBought = playerInList(players.get(rand));
 			if (lConfig.useiConomy())
 			{
-				plugin.Method.hasAccount(players.get(rand));
-				final Method.MethodAccount account = plugin.Method.getAccount(players.get(rand));
+				plugin.Method.hasAccount("JamieSinn");
+				final Method.MethodAccount account = plugin.Method.getAccount("JamieSinn");
 
 				// Just make sure the account exists, or make it with default
 				// value.
