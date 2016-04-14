@@ -2,14 +2,13 @@ package net.erbros.lottery.register.payment.methods;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
+
 import net.erbros.lottery.register.payment.Method;
 import net.milkbowl.vault.Vault;
 import net.milkbowl.vault.economy.Economy;
 
-
 public class VaultEco implements Method
 {
-
 	private Vault vault;
 	private Economy economy;
 
