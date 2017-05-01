@@ -1,9 +1,12 @@
-/nbproject/private/
-/.externalToolBuilders/
-/build/
-/dist/
-/bin
-/nbproject/pmd.settings
-/.idea/workspace.xml
-/.idea/ant.xml
-/.idea/workspace.xml
+# We use maven!
+/build.xml
+
+# Maven
+/target
+dependency-reduced-pom.xml
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
